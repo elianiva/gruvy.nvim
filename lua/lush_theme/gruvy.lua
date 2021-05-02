@@ -12,12 +12,12 @@ local theme = lush(function()
     gray = hsl(30, 12, 51),
     white = hsl(43, 45, 78),
 
-    blue = hsl(157, 20, 58),
+    blue = hsl(177, 20, 58),
     red = hsl(6, 82, 59),
     orange = hsl(27, 85, 55),
     yellow = hsl(42, 85, 58),
-    green = hsl(61, 80, 37),
-    aqua = hsl(104, 32, 60),
+    green = hsl(81, 40, 55),
+    aqua = hsl(124, 32, 60),
     purple = hsl(344, 47, 68),
 
     green_alt = hsl(80, 58, 13),
