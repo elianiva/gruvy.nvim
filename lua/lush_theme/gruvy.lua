@@ -12,18 +12,18 @@ local theme = lush(function()
     gray = hsl(30, 12, 51),
     white = hsl(43, 45, 78),
 
-    blue = hsl(157, 16, 58),
-    red = hsl(6, 86, 59),
+    blue = hsl(157, 20, 58),
+    red = hsl(6, 82, 59),
     orange = hsl(27, 85, 55),
     yellow = hsl(42, 85, 58),
     green = hsl(61, 80, 37),
     aqua = hsl(104, 32, 60),
     purple = hsl(344, 47, 68),
 
-    green_alt = hsl(80, 60, 13),
-    orange_alt = hsl(34, 58, 22),
-    red_alt = hsl(6, 58, 18),
-    yellow_alt = hsl(42, 65, 16),
+    green_alt = hsl(80, 58, 13),
+    orange_alt = hsl(34, 58, 16),
+    red_alt = hsl(6, 58, 14),
+    yellow_alt = hsl(42, 65, 14),
     blue_alt = hsl(180, 46, 14),
   }
   return {
@@ -75,8 +75,8 @@ local theme = lush(function()
     NormalFloat  { bg = c.bg1.ro(200), fg = "NONE" }, -- Normal text in floating windows.
     FloatBorder  { bg = c.bg1.ro(200), fg = c.gray }, -- Normal text in floating windows.
     NormalNC     { Normal }, -- normal text in non-current windows
-    Pmenu        { bg = c.bg1, fg = c.gray }, -- Popup menu: normal item.
-    PmenuSel     { bg = c.bg3.da(10), fg = c.white.li(20) }, -- Popup menu: selected item.
+    Pmenu        { bg = c.bg1, fg = c.gray.li(20) }, -- Popup menu: normal item.
+    PmenuSel     { bg = c.bg3.da(30), fg = c.yellow.li(20) }, -- Popup menu: selected item.
     PmenuSbar    { bg = c.bg2, fg = "NONE" }, -- Popup menu: scrollbar.
     PmenuThumb   { bg = c.bg3, fg = "NONE" }, -- Popup menu: Thumb of the scrollbar.
     Question     { MoreMsg }, -- |hit-enter| prompt and yes/no questions
@@ -198,7 +198,7 @@ local theme = lush(function()
     TSConstant            { Constant },    -- For constants
     TSConstBuiltin        { Constant },    -- For constant that are built in the language: `nil` in Lua.
     TSConstMacro          { Macro },    -- For constants that are defined by macros: `NULL` in C.
-    TSError               { Error },    -- For syntax/parser errors.
+    TSError               { bg = "NONE", fg = "NONE" },    -- For syntax/parser errors.
     TSException           { Exception },    -- For exception related keywords.
     TSField               { bg = "NONE", fg = c.blue },    -- For fields.
     TSFloat               { Float },    -- For floats.
@@ -224,7 +224,7 @@ local theme = lush(function()
     TSString              { String },    -- For strings.
     TSStringRegex         { TSString },    -- For regexes.
     TSStringEscape        { Character },    -- For escape characters within a string.
-    -- TSSymbol              { },    -- For identifiers referring to symbols or atoms.
+    TSSymbol              { Identifier },    -- For identifiers referring to symbols or atoms.
     TSType                { Type },    -- For types.
     TSTypeBuiltin         { Type },    -- For builtin types.
     TSVariable            { bg = "NONE", fg = c.white },    -- Any variable name that does not have another highlight.
@@ -254,9 +254,10 @@ local theme = lush(function()
     NvimTreeFolderIcon          { fg = c.yellow },
     NvimTreeIndentMarker        { fg = c.gray },
     NvimTreeNormal              { fg = c.white.da(5) },
-    NvimTreeFolderName          { NvimTreeNormal },
-    NvimTreeOpenedFolderName    { fg = c.white.li(10) },
+    NvimTreeFolderName          { fg = c.yellow, gui = "bold" },
+    NvimTreeOpenedFolderName    { fg = c.yellow.li(10), gui = "bold" },
     NvimTreeRootFolder          { fg = c.yellow.da(20) },
+    NvimTreeExecFile            { fg = c.blue },
 
     -- some fix for html related stuff
     htmlH1                  { fg = c.white },
@@ -282,6 +283,12 @@ local theme = lush(function()
 
     -- lsp-trouble.nvim
     LspTroubleIndent    { fg = c.bg4.li(10) },
+
+    -- bufferline diagnostic
+    TabLineError        { LspDiagnosticsSignError },
+    TabLineWarning      { LspDiagnosticsSignWarning },
+    TabLineHint         { LspDiagnosticsSignHint },
+    TabLineInformation  { LspDiagnosticsSignInformation },
   }
 end)
 
