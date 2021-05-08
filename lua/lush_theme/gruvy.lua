@@ -16,7 +16,7 @@ local theme = lush(function()
     red = hsl(6, 82, 59),
     orange = hsl(27, 85, 55),
     yellow = hsl(42, 85, 58),
-    green = hsl(81, 40, 55),
+    green = hsl(75, 40, 55),
     aqua = hsl(124, 32, 60),
     purple = hsl(344, 47, 68),
 
@@ -39,7 +39,7 @@ local theme = lush(function()
     -- styling for that group (meaning they mostly get styled as Normal)
     -- or leave them commented to apply vims default colouring or linking.
 
-    Comment      { fg = c.gray }, -- any comment
+    Comment      { fg = c.gray, gui = "italic" }, -- any comment
     Normal       { bg = "NONE", fg = c.white }, -- normal text
     CursorLine   { bg = c.bg1 }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
     CursorColumn { CursorLine }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
@@ -51,7 +51,7 @@ local theme = lush(function()
     Directory    { bg = "NONE", fg = c.orange }, -- directory names (and other special names in listings)
     DiffAdd      { bg = c.green_alt, fg = "NONE" }, -- diff mode: Added line |diff.txt|
     DiffChange   { bg = c.orange_alt, fg = "NONE" }, -- diff mode: Changed line |diff.txt|
-    DiffDelete   { bg = c.red_alt, fg = "NONE" }, -- diff mode: Deleted line |diff.txt|
+    DiffDelete   { bg = c.red_alt, fg = c.red_alt.li(25) }, -- diff mode: Deleted line |diff.txt|
     DiffText     { bg = "NONE", fg = "NONE" }, -- diff mode: Changed text within a changed line |diff.txt|
     EndOfBuffer  { fg = c.bg2 }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
     TermCursor   { Cursor }, -- cursor in a focused terminal
@@ -264,7 +264,7 @@ local theme = lush(function()
 
     -- markdown stuff
     mkdLink                 { fg = c.blue, gui = "underline" },
-    mkdLineBreak            { bg = "NONE", fg = "NONE" },
+    mkdLineBreak            { bg = "NONE", fg = "NONE", gui = "NONE" },
 
     -- flutter-tools.nvim
     FlutterWidgetGuides     { fg = c.bg4.li(10) },
@@ -280,6 +280,7 @@ local theme = lush(function()
     StatusLineFTAlt     { bg = c.bg2, fg = c.white },
     StatusLineGit       { bg = c.bg4, fg = c.bg },
     StatusLineGitAlt    { bg = c.bg4, fg = c.bg },
+    StatusLineLSP       { bg = c.bg1, fg = c.gray.li(25) },
 
     -- lsp-trouble.nvim
     LspTroubleIndent    { fg = c.bg4.li(10) },
