@@ -89,7 +89,7 @@ local theme = lush(function()
     TabLine      { bg = c.bg1, fg = c.white }, -- tab pages line, not active tab page label
     TabLineFill  { bg = "NONE", fg = c.white }, -- tab pages line, where there are no labels
     TabLineSel   { bg = c.bg1, fg = c.yellow }, -- tab pages line, active tab page label
-    Title        { bg = "NONE", fg = c.yellow }, -- titles for output from ":set all", ":autocmd" etc.
+    Title        { bg = "NONE", fg = c.aqua, gui = "bold" }, -- titles for output from ":set all", ":autocmd" etc.
     Visual       { bg = c.bg2, fg = "NONE" }, -- Visual mode selection
     VisualNOS    { gui = "reverse" }, -- Visual mode selection when vim is "Not Owning the Selection".
     WarningMsg   { bg = "NONE", fg = c.red }, -- warning messages
@@ -260,11 +260,13 @@ local theme = lush(function()
     NvimTreeExecFile            { fg = c.blue },
 
     -- some fix for html related stuff
-    htmlH1                  { fg = c.white },
+    htmlH1                  { Title },
 
     -- markdown stuff
     mkdLink                 { fg = c.blue, gui = "underline" },
     mkdLineBreak            { bg = "NONE", fg = "NONE", gui = "NONE" },
+    mkdHeading              { fg = c.white },
+    mkdInlineURL            { mkdLink },
 
     -- flutter-tools.nvim
     FlutterWidgetGuides     { fg = c.bg4.li(10) },
@@ -281,6 +283,7 @@ local theme = lush(function()
     StatusLineGit       { bg = c.bg4, fg = c.bg },
     StatusLineGitAlt    { bg = c.bg4, fg = c.bg },
     StatusLineLSP       { bg = c.bg1, fg = c.gray.li(25) },
+    StatusLineFileName  { bg = c.bg1, fg = c.white, gui = "bold" },
 
     -- lsp-trouble.nvim
     LspTroubleIndent    { fg = c.bg4.li(10) },
@@ -290,6 +293,9 @@ local theme = lush(function()
     TabLineWarning      { LspDiagnosticsSignWarning },
     TabLineHint         { LspDiagnosticsSignHint },
     TabLineInformation  { LspDiagnosticsSignInformation },
+
+    -- vim-illuminate
+    illuminatedWord     { Visual },
   }
 end)
 
